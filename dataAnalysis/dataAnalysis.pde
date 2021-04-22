@@ -1,6 +1,8 @@
 Table US_StateAreaData;
 float totalArea = 0;
 float[] stateAngles = new float[52];
+color[] stateColor = new color[52];
+String[] stateNames = new String[52];
 
 void setup(){
   US_StateAreaData = loadTable("https://raw.githubusercontent.com/jakevdp/data-USstates/master/state-areas.csv", "header");
@@ -26,8 +28,7 @@ void calTotalArea(){
 void pieChart(float diameter, float[] data){
   float lastAngle = 0;
   for(int i = 0; i < data.length; i++){
-    float gray = map(i, 0, data.length, 0, 255);
-    fill(gray);
+    fill(stateColor[i]);
     arc(width/2, height/2, diameter, diameter, lastAngle, lastAngle + radians(data[i]));
     lastAngle += radians(data[i]);
   }
@@ -38,6 +39,13 @@ void calStateSize(){
   for(TableRow state : US_StateAreaData.rows()){
     float area = state.getFloat("area (sq. mi)");
     stateAngles[stateNR] = (area/totalArea)*360;
+    stateColor[stateNR] = color(random(255), random(255), random(255));
     stateNR++;
   }
+}
+
+void getStateNames(){
+  for(TableRow state : US_StateAreaData.rows()){
+    String name = state.getString("state");
+    
 }
