@@ -3,19 +3,25 @@ float totalArea = 0;
 float[] stateAngles = new float[52];
 color[] stateColor = new color[52];
 String[] stateNames = new String[52];
+PVector vectorA;
+PVector vectorB;
+
 
 void setup(){
   US_StateAreaData = loadTable("https://raw.githubusercontent.com/jakevdp/data-USstates/master/state-areas.csv", "header");
   size(800, 800);
   calTotalArea();
   calStateSize();
-  noStroke();
-  noLoop();
+  getStateNames();
+  //noStroke();
+  background(random(255), random(255), random(255));
+  pieChart(750, stateAngles);
+  vectorA = new PVector(400, 400);
+  //vectorB = new PVector(
 }
 
-void draw(){
-  background(100,50,50);
-   pieChart(750, stateAngles);
+void draw(){   
+  line(400,0,vectorA.x, vectorA.y);
 }
 
 void calTotalArea(){
@@ -45,7 +51,14 @@ void calStateSize(){
 }
 
 void getStateNames(){
+  int stateNR = 0;
   for(TableRow state : US_StateAreaData.rows()){
     String name = state.getString("state");
-    
+    stateNames[stateNR] = name;
+    stateNR++;
+  }
+}
+
+void placeNames(){
+  
 }
