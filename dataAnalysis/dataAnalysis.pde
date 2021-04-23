@@ -4,7 +4,7 @@ float[] stateAngles = new float[52];
 color[] stateColor = new color[52];
 String[] stateNames = new String[52];
 
-boolean isLoading = false;
+boolean isLoading = true;
 boolean pieChartCreated = false;
 
 void setup() {
@@ -113,12 +113,12 @@ void placeNames() {
   }
 }
 
-void loading() {
-  isLoading = true;
-  
-  fill(0);
-  textSize(100);
-  text("loading...", (width / 2), (height / 2));
-  
-  getData();
+void loading() {  
+  if (isLoading == true) {
+    fill(0);
+    textSize(100);
+    text("Loading...", (width / 2), (height / 2));
+    
+    getData();
+  } 
 }
