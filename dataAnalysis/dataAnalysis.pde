@@ -4,7 +4,8 @@ float[] stateAngles = new float[52];
 color[] stateColor = new color[52];
 String[] stateNames = new String[52];
 
-boolean isLoading = true;
+boolean isLoading = false;
+boolean pieChartCreated = false;
 
 void setup() {
   // US_StateAreaData = loadTable("https://raw.githubusercontent.com/jakevdp/data-USstates/master/state-areas.csv", "header");
@@ -29,10 +30,14 @@ void draw() {
   //thread("createPieChart");
   //loading();
   //createPieChart();
+  
+  if (isLoading == false) {
+    createPieChart();
+  }
 }
 
 void createPieChart() {
-  getData();
+  //getData();
   
   calTotalArea();
   calStateSize();
@@ -41,6 +46,7 @@ void createPieChart() {
   placeNames();
   
   isLoading = false;
+  pieChartCreated = true;
 }
 
 void getData() {
@@ -108,9 +114,11 @@ void placeNames() {
 }
 
 void loading() {
-  if (isLoading == true) {
-    fill(0);
-    textSize(100);
-    text("loading...", (width / 2), (height / 2));
-  }
+  isLoading = true;
+  
+  fill(0);
+  textSize(100);
+  text("loading...", (width / 2), (height / 2));
+  
+  getData();
 }
