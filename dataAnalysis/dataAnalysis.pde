@@ -13,7 +13,7 @@ void setup() {
   
   textAlign(CENTER);
   
-  noLoop();
+  //noLoop();
   
   noStroke();
   // background(random(255), random(255), random(255));
