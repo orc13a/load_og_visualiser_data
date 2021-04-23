@@ -7,7 +7,7 @@ String[] stateNames = new String[52];
 boolean isLoading = true;
 
 void setup() {
-  US_StateAreaData = loadTable("https://raw.githubusercontent.com/jakevdp/data-USstates/master/state-areas.csv", "header");
+  // US_StateAreaData = loadTable("https://raw.githubusercontent.com/jakevdp/data-USstates/master/state-areas.csv", "header");
   size(800, 800);
   
   textAlign(CENTER);
@@ -32,7 +32,7 @@ void draw() {
 }
 
 void createPieChart() {
-  // getData();
+  getData();
   
   calTotalArea();
   calStateSize();
